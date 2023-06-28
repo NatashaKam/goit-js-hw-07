@@ -36,20 +36,14 @@ const onImgClick = (event) => {
     </div>
   `);
   instance.show();
+  document.addEventListener("keydown", onEscClick);
 };
 
 galleryList.addEventListener("click", onImgClick);
 
-const onModalClose = () => {
-  if (instance) {
-    instance.close();
-  }
-};
-
 const onEscClick = (event) => {
   if (event.code === "Escape") {
-    onModalClose();
+    instance.close();
+    document.removeEventListener("keydown", onEscClick);
   }
 };
-
-document.addEventListener("keydown", onEscClick);
